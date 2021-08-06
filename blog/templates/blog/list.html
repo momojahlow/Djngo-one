@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <img class="w-1/5" src="{% static 'images/sejour.jpeg' %}" alt="" srcset="">
+    <h1>List des articles</h1>    
+    <div class="articles">
+        {% for article in articles %}
+        <div class="bg-gray-200">
+            <h1>{{article.title}}</h1>
+            <p>
+                <img src="{{article.image.url}}" alt="img" srcset=""><br>
+                {{article.snippet}}<br>
+                <span>{{article.date}}</span><br>
+                <a class="text-white font-bold bg-red-300 px-2 py-1 rounded-md " href="{% url 'blog:article_detail' id=article.id %}">voir plus</a>
+            </p>
+        </div>
+        {% endfor%}
+    </div>
+{% endblock %}
